@@ -32,14 +32,10 @@
 
 // 当cell被点击的时候调用
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-
-	if (self.delegate) {
-		
-		if ([self.delegate respondsToSelector:@selector(pictureCycleCellDidSelected:)]) {
-			
-			[self.delegate pictureCycleCellDidSelected:self.itemTag];
-		}
-	}
+    if ([self.delegate respondsToSelector:@selector(pictureCycleCellDidSelected:)]) {
+        
+        [self.delegate pictureCycleCellDidSelected:self.itemTag];
+    }
 }
 
 #pragma mark - 属性 setter
