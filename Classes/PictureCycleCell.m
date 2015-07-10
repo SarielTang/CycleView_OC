@@ -10,7 +10,10 @@
 
 @implementation PictureCycleCell
 
-@synthesize delegate;
+//由于assign需要进行地址赋为空的操作，否则会出现野指针错误，所以需要进行释放.
+- (void)dealloc {
+    _delegate = nil;
+}
 
 //自动布局
 - (instancetype)initWithFrame:(CGRect)frame {

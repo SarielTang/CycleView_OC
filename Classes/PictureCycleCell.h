@@ -28,6 +28,6 @@
 @property (nonatomic, assign) NSInteger itemTag;
 
 /// delegate
-@property (nonatomic, weak) id<PictureCycleCellDelegate> delegate;
+@property (nonatomic, assign) id<PictureCycleCellDelegate> delegate;
 
 @end
