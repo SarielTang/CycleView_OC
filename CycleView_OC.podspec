@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CycleView_OC"
-  s.version      = "1.0.1"
+  s.version      = "1.0.4"
   s.summary      = "用法最简单的无限循环的图片轮播器,使用OC实现，更加便于大家的使用。The easiest way to use infinite-loop-view."
 
   s.description  = <<-DESC
