@@ -358,6 +358,7 @@
 					"/Users/sarieltang/Documents/CycleView_OC/CycleView_OC/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = CycleView_OC_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -372,6 +373,7 @@
 					"/Users/sarieltang/Documents/CycleView_OC/CycleView_OC/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = CycleView_OC_Demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -430,6 +432,7 @@
 				0D08BBF51B501A4E00DD1AB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D08BBF61B501A4E00DD1AB8 /* Build configuration list for PBXNativeTarget "CycleView_OC_DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -438,6 +441,7 @@
 				0D08BBF81B501A4E00DD1AB8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

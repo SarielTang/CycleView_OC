@@ -10,6 +10,8 @@
 
 @implementation PictureCycleCell
 
+@synthesize delegate;
+
 //自动布局
 - (instancetype)initWithFrame:(CGRect)frame {
 	
