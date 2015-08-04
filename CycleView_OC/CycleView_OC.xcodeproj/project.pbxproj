@@ -10,9 +10,9 @@
 		0D08BB2B1B50186D00DD1AB8 /* CycleView_OC.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D08BB2A1B50186D00DD1AB8 /* CycleView_OC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D08BB311B50186D00DD1AB8 /* CycleView_OC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D08BB251B50186D00DD1AB8 /* CycleView_OC.framework */; };
 		0D08BB381B50186D00DD1AB8 /* CycleView_OCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BB371B50186D00DD1AB8 /* CycleView_OCTests.m */; };
-		0D08BBBD1B50197F00DD1AB8 /* PictureCycleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D08BBB91B50197F00DD1AB8 /* PictureCycleCell.h */; };
+		0D08BBBD1B50197F00DD1AB8 /* PictureCycleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D08BBB91B50197F00DD1AB8 /* PictureCycleCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D08BBBE1B50197F00DD1AB8 /* PictureCycleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBBA1B50197F00DD1AB8 /* PictureCycleCell.m */; };
-		0D08BBBF1B50197F00DD1AB8 /* PictureCycleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D08BBBB1B50197F00DD1AB8 /* PictureCycleViewController.h */; };
+		0D08BBBF1B50197F00DD1AB8 /* PictureCycleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D08BBBB1B50197F00DD1AB8 /* PictureCycleViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D08BBC01B50197F00DD1AB8 /* PictureCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBBC1B50197F00DD1AB8 /* PictureCycleViewController.m */; };
 /* End PBXBuildFile section */
 
