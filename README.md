@@ -5,7 +5,7 @@
 
 ## Requirements
 
-* iOS 5.0+ 
+* iOS 6.0+ 
 
 ## Installation
 
@@ -36,7 +36,7 @@ You should open the `{Project}.xcworkspace` instead of the `{Project}.xcodeproj`
 
 For more information about how to use CocoaPods, I suggest [this tutorial](http://www.raywenderlich.com/64546/introduction-to-cocoapods-2).
 
-## 如何使用CycleView
+## 如何使用CycleView_OC
 * cocoapods导入：`pod 'CycleView_OC'`
 * 手动导入：
     * 将`CycleView_OC/Classes`文件夹中的所有文件拽入项目中
