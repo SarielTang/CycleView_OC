@@ -15,6 +15,10 @@
 		0D08BBF01B501A4E00DD1AB8 /* CycleView_OC_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBEF1B501A4E00DD1AB8 /* CycleView_OC_DemoTests.m */; };
 		0D08BBFD1B501AA100DD1AB8 /* CycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBFA1B501AA100DD1AB8 /* CycleViewController.m */; };
 		0D08BBFE1B501AA100DD1AB8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBFC1B501AA100DD1AB8 /* ViewController.m */; };
+		0DD20C9B1BD5F22A001B2509 /* CycleAnimatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD20C931BD5F22A001B2509 /* CycleAnimatorViewController.m */; settings = {ASSET_TAGS = (); }; };
+		0DD20C9C1BD5F22A001B2509 /* NSTimer+SRTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD20C961BD5F22A001B2509 /* NSTimer+SRTimer.m */; settings = {ASSET_TAGS = (); }; };
+		0DD20C9D1BD5F22A001B2509 /* PictureCycleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD20C981BD5F22A001B2509 /* PictureCycleCell.m */; settings = {ASSET_TAGS = (); }; };
+		0DD20C9E1BD5F22A001B2509 /* PictureCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD20C9A1BD5F22A001B2509 /* PictureCycleViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,15 @@
 		0D08BBFA1B501AA100DD1AB8 /* CycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleViewController.m; sourceTree = "<group>"; };
 		0D08BBFB1B501AA100DD1AB8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		0D08BBFC1B501AA100DD1AB8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0DD20C921BD5F22A001B2509 /* CycleAnimatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleAnimatorViewController.h; sourceTree = "<group>"; };
+		0DD20C931BD5F22A001B2509 /* CycleAnimatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleAnimatorViewController.m; sourceTree = "<group>"; };
+		0DD20C941BD5F22A001B2509 /* CycleView_OC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleView_OC.h; sourceTree = "<group>"; };
+		0DD20C951BD5F22A001B2509 /* NSTimer+SRTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+SRTimer.h"; sourceTree = "<group>"; };
+		0DD20C961BD5F22A001B2509 /* NSTimer+SRTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+SRTimer.m"; sourceTree = "<group>"; };
+		0DD20C971BD5F22A001B2509 /* PictureCycleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCycleCell.h; sourceTree = "<group>"; };
+		0DD20C981BD5F22A001B2509 /* PictureCycleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCycleCell.m; sourceTree = "<group>"; };
+		0DD20C991BD5F22A001B2509 /* PictureCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCycleViewController.h; sourceTree = "<group>"; };
+		0DD20C9A1BD5F22A001B2509 /* PictureCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCycleViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +97,7 @@
 		0D08BBD21B501A4E00DD1AB8 /* CycleView_OC_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				0DD20C911BD5F22A001B2509 /* Classes */,
 				0D08BBD71B501A4E00DD1AB8 /* AppDelegate.h */,
 				0D08BBD81B501A4E00DD1AB8 /* AppDelegate.m */,
 				0D08BBF91B501AA100DD1AB8 /* CycleViewController.h */,
@@ -122,6 +136,22 @@
 				0D08BBEE1B501A4E00DD1AB8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0DD20C911BD5F22A001B2509 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0DD20C921BD5F22A001B2509 /* CycleAnimatorViewController.h */,
+				0DD20C931BD5F22A001B2509 /* CycleAnimatorViewController.m */,
+				0DD20C941BD5F22A001B2509 /* CycleView_OC.h */,
+				0DD20C951BD5F22A001B2509 /* NSTimer+SRTimer.h */,
+				0DD20C961BD5F22A001B2509 /* NSTimer+SRTimer.m */,
+				0DD20C971BD5F22A001B2509 /* PictureCycleCell.h */,
+				0DD20C981BD5F22A001B2509 /* PictureCycleCell.m */,
+				0DD20C991BD5F22A001B2509 /* PictureCycleViewController.h */,
+				0DD20C9A1BD5F22A001B2509 /* PictureCycleViewController.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,9 +254,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD20C9D1BD5F22A001B2509 /* PictureCycleCell.m in Sources */,
 				0D08BBD91B501A4E00DD1AB8 /* AppDelegate.m in Sources */,
+				0DD20C9E1BD5F22A001B2509 /* PictureCycleViewController.m in Sources */,
 				0D08BBD61B501A4E00DD1AB8 /* main.m in Sources */,
 				0D08BBFE1B501AA100DD1AB8 /* ViewController.m in Sources */,
+				0DD20C9C1BD5F22A001B2509 /* NSTimer+SRTimer.m in Sources */,
+				0DD20C9B1BD5F22A001B2509 /* CycleAnimatorViewController.m in Sources */,
 				0D08BBFD1B501AA100DD1AB8 /* CycleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +323,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -332,6 +367,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -353,6 +389,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/sarieltang/Documents/CycleView_OC/CycleView_OC/build/Debug-iphoneos",
@@ -361,6 +398,7 @@
 				INFOPLIST_FILE = CycleView_OC_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "club.sariel.CycleView-OC-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -369,6 +407,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/sarieltang/Documents/CycleView_OC/CycleView_OC/build/Debug-iphoneos",
@@ -377,6 +416,7 @@
 				INFOPLIST_FILE = CycleView_OC_Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "club.sariel.CycleView-OC-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

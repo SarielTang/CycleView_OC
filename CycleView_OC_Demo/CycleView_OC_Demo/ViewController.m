@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "CycleViewController.h"
 
-@interface ViewController ()
+@interface ViewController ()<CycleAnimatorViewControllerDelegate,UIGestureRecognizerDelegate>
 
 @end
 
@@ -22,6 +22,13 @@
     
     self.tableView.tableHeaderView = cycleView.view;
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
+    
+    cycleView.delegate = self;
+}
+
+///通过重写这个代理方法，即可进行点击图片后的交互处理.
+- (void)pictureCycleCellDidSelected:(NSInteger)itemTag{
+	NSLog(@"被选中的item的tag值：%zd", itemTag);
 }
 
 - (void)didReceiveMemoryWarning {

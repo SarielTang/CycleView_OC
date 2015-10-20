@@ -8,7 +8,7 @@
 
 #import "CycleViewController.h"
 
-@interface CycleViewController ()<PictureCycleCellDelegate>
+@interface CycleViewController ()
 
 @end
 
@@ -25,13 +25,31 @@
         [arrayM addObject:[UIImage imageNamed:imageName]];
     }
     
-    self.cycleImageList = arrayM;
-    NSLog(@"%@", arrayM);
-}
-
-///通过重写这个代理方法，即可进行点击图片后的交互处理.
-- (void)pictureCycleCellDidSelected:(NSInteger)itemTag{
-	NSLog(@"被选中的item的tag值：%zd", itemTag);
+#pragma mark - required
+    //You should set the size of the view
+    //设置视图的大小
+    [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
+    
+    //You should set the image array
+    //设置图片数组
+    self.animatorImageList = arrayM;
+    
+#pragma mark - optional
+    //you can modify the animation effect by enumeration type
+    //可以通过枚举类型,修改动画效果
+    self.animationType = SRTransitionAnimateTypeRippleEffect;
+    
+    //You can set the picture carousel time interval
+    //可以设置图片轮播的时间间隔
+    self.cycleTimeInterval = 4;
+    
+    //You can set whether to limit the page switching in the animation implementation process
+    //可以设置是否限制在动画执行过程中进行页面切换
+    self.isLimitGestureWhenAnimating = NO;
+    
+    //you can change image's contentMode
+    //可以设置图片填充模式
+    self.animatorImageView.contentMode = UIViewContentModeScaleToFill;
 }
 
 @end

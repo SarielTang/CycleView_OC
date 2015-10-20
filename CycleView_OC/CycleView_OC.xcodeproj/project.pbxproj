@@ -14,6 +14,10 @@
 		0D08BBBE1B50197F00DD1AB8 /* PictureCycleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBBA1B50197F00DD1AB8 /* PictureCycleCell.m */; };
 		0D08BBBF1B50197F00DD1AB8 /* PictureCycleViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D08BBBB1B50197F00DD1AB8 /* PictureCycleViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D08BBC01B50197F00DD1AB8 /* PictureCycleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D08BBBC1B50197F00DD1AB8 /* PictureCycleViewController.m */; };
+		0DD60D651BD21E040096A4FA /* NSTimer+SRTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DD60D631BD21E040096A4FA /* NSTimer+SRTimer.h */; settings = {ASSET_TAGS = (); }; };
+		0DD60D661BD21E040096A4FA /* NSTimer+SRTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD60D641BD21E040096A4FA /* NSTimer+SRTimer.m */; settings = {ASSET_TAGS = (); }; };
+		0DD60D6B1BD224DF0096A4FA /* CycleAnimatorViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DD60D691BD224DF0096A4FA /* CycleAnimatorViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DD60D6C1BD224DF0096A4FA /* CycleAnimatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD60D6A1BD224DF0096A4FA /* CycleAnimatorViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,10 @@
 		0D08BBBA1B50197F00DD1AB8 /* PictureCycleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCycleCell.m; sourceTree = "<group>"; };
 		0D08BBBB1B50197F00DD1AB8 /* PictureCycleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PictureCycleViewController.h; sourceTree = "<group>"; };
 		0D08BBBC1B50197F00DD1AB8 /* PictureCycleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PictureCycleViewController.m; sourceTree = "<group>"; };
+		0DD60D631BD21E040096A4FA /* NSTimer+SRTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+SRTimer.h"; sourceTree = "<group>"; };
+		0DD60D641BD21E040096A4FA /* NSTimer+SRTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+SRTimer.m"; sourceTree = "<group>"; };
+		0DD60D691BD224DF0096A4FA /* CycleAnimatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CycleAnimatorViewController.h; sourceTree = "<group>"; };
+		0DD60D6A1BD224DF0096A4FA /* CycleAnimatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CycleAnimatorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,13 +122,33 @@
 		0D08BBB81B50197F00DD1AB8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0D08BBB91B50197F00DD1AB8 /* PictureCycleCell.h */,
-				0D08BBBA1B50197F00DD1AB8 /* PictureCycleCell.m */,
+				0DD60D681BD2247E0096A4FA /* View */,
+				0DD60D671BD224610096A4FA /* Extension */,
 				0D08BBBB1B50197F00DD1AB8 /* PictureCycleViewController.h */,
 				0D08BBBC1B50197F00DD1AB8 /* PictureCycleViewController.m */,
+				0DD60D691BD224DF0096A4FA /* CycleAnimatorViewController.h */,
+				0DD60D6A1BD224DF0096A4FA /* CycleAnimatorViewController.m */,
 			);
 			name = Classes;
 			path = ../../Classes;
+			sourceTree = "<group>";
+		};
+		0DD60D671BD224610096A4FA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0DD60D631BD21E040096A4FA /* NSTimer+SRTimer.h */,
+				0DD60D641BD21E040096A4FA /* NSTimer+SRTimer.m */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		0DD60D681BD2247E0096A4FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D08BBB91B50197F00DD1AB8 /* PictureCycleCell.h */,
+				0D08BBBA1B50197F00DD1AB8 /* PictureCycleCell.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +160,8 @@
 			files = (
 				0D08BB2B1B50186D00DD1AB8 /* CycleView_OC.h in Headers */,
 				0D08BBBD1B50197F00DD1AB8 /* PictureCycleCell.h in Headers */,
+				0DD60D651BD21E040096A4FA /* NSTimer+SRTimer.h in Headers */,
+				0DD60D6B1BD224DF0096A4FA /* CycleAnimatorViewController.h in Headers */,
 				0D08BBBF1B50197F00DD1AB8 /* PictureCycleViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DD60D661BD21E040096A4FA /* NSTimer+SRTimer.m in Sources */,
 				0D08BBC01B50197F00DD1AB8 /* PictureCycleViewController.m in Sources */,
+				0DD60D6C1BD224DF0096A4FA /* CycleAnimatorViewController.m in Sources */,
 				0D08BBBE1B50197F00DD1AB8 /* PictureCycleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +309,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -324,6 +357,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -351,10 +385,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CycleView_OC/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "club.sariel.CycleView-OC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -367,10 +403,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = CycleView_OC/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "club.sariel.CycleView-OC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
