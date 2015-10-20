@@ -81,8 +81,10 @@ For more information about how to use CocoaPods, I suggest [this tutorial](http:
 ```
 //继承 CycleAnimatorViewController
 @interface CycleViewController : CycleAnimatorViewController
+```
 
-//ViewDidLoad中的处理
+* ViewDidLoad中的处理
+```
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -120,16 +122,73 @@ For more information about how to use CocoaPods, I suggest [this tutorial](http:
     //可以设置图片填充模式
     self.animatorImageView.contentMode = UIViewContentModeScaleToFill;
 }
+```
 
-在需要使用这个控制器的地方进行如下设置：
+* 在需要使用这个控制器的地方进行如下设置：
+```
     CycleViewController *cycleView = [[CycleViewController alloc] init];  // 创建图片轮转
     [self addChildViewController:cycleView];// 添加控制
     cycleView.delegate = self;//设置代理
-    
-    满足代理协议<CycleAnimatorViewControllerDelegate>
-    通过重写这个代理方法，即可进行点击图片后的交互处理.
+```
+* 满足代理协议`<CycleAnimatorViewControllerDelegate>`
+* 通过重写这个代理方法，即可进行点击图片后的交互处理.
+```
     - (void)pictureCycleCellDidSelected:(NSInteger)itemTag{
 	    NSLog(@"被选中的item的tag值：%zd", itemTag);
     }
 
 ```
+
+
+##Screenshot
+
+```
+常规图片轮播器
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce1.gif)
+
+```
+立体旋转效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce2.gif)
+
+```
+淡入淡出效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce3.gif)
+
+```
+平面翻转效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce4.gif)
+
+```
+翻页效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce5.gif)
+
+```
+反向翻页效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce6.gif)
+
+```
+横向推出效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce7.gif)
+
+```
+从上层抽出效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce8.gif)
+
+```
+水滴效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce9.gif)
+
+```
+从角落收起效果
+```
+* ![image](https://github.com/SarielTang/ScreenShot/blob/master/CycleViewIntroduce10.gif)
+
