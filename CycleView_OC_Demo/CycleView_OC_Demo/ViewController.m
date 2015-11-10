@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "CycleViewController.h"
 
-@interface ViewController ()<CycleAnimatorViewControllerDelegate,UIGestureRecognizerDelegate>
+@interface ViewController ()<CycleAnimatorViewControllerDelegate>
 
 @end
 
