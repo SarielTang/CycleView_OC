@@ -63,7 +63,9 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 	
     // Register cell classes (注册cell)
     [self.collectionView registerClass:[PictureCycleCell class] forCellWithReuseIdentifier:reuseIdentifier];
-	[self timeStart];
+    if (self.cycleImageList.count > 1) {
+        [self timeStart];
+    }
 }
 
 // view 即将显示
