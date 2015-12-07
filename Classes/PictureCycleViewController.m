@@ -9,6 +9,8 @@
 #import "PictureCycleViewController.h"
 #import "PictureCycleCell.h"
 #import "NSTimer+SRTimer.h"
+#import "UIImageView+WebCache.h"
+#import "UIImage+color.h"
 
 @interface PictureCycleViewController ()<PictureCycleCellDelegate>
 
@@ -26,6 +28,8 @@
 
 // pageController
 @property (nonatomic, strong) UIPageControl *pageControl;
+
+@property (nonatomic,strong) NSArray *cycleList;
 
 @end
 
@@ -72,7 +76,13 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-    self.pageControl.numberOfPages = self.cycleImageList.count;
+    if (self.isNetImage) {
+        self.pageControl.numberOfPages = self.cycleImageUrls.count;
+        _cycleList = self.cycleImageUrls;
+    }else{
+        self.pageControl.numberOfPages = self.cycleImageList.count;
+        _cycleList = self.cycleImageList;
+    }
     self.pageControl.center = CGPointMake(self.collectionView.superview.frame.size.width * 0.5, self.collectionView.frame.size.height * 0.9);
     
     if(self.pageControl.numberOfPages == 2){
@@ -97,9 +107,9 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.cycleImageList.count>2) {
+    if (self.cycleList.count>2) {
         [self.cycleTimer pauseTimer];
-    }else if(self.cycleImageList.count == 2){
+    }else if(self.cycleList.count == 2){
         [self.cycleTimer2 pauseTimer];
     }
 }
@@ -114,7 +124,7 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 // 返回组数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return self.cycleImageList.count;
+    return self.cycleList.count;
 }
 
 /// 返回 ItemTag
@@ -122,9 +132,12 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 	
     PictureCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 //	self.cellIndex = indexPath.item;
-	NSInteger index = (indexPath.item - 1 + self.cycleImageList.count + self.currentIndex ) % self.cycleImageList.count;
-	
-	cell.image = self.cycleImageList[index];
+	NSInteger index = (indexPath.item - 1 + self.cycleList.count + self.currentIndex ) % self.cycleList.count;
+    if (self.isNetImage) {
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.cycleImageUrls[index]] placeholderImage:[UIImage imageWithColor:[UIColor blackColor]]];
+    }else {
+        cell.image = self.cycleImageList[index];
+    }
 	cell.delegate = self;
 	cell.itemTag = index;
 	
@@ -142,7 +155,7 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
         
         if (offset != 0) {
             
-            self.currentIndex = (self.currentIndex + self.cycleImageList.count + offset) % self.cycleImageList.count;
+            self.currentIndex = (self.currentIndex + self.cycleList.count + offset) % self.cycleList.count;
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
             [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
@@ -230,7 +243,7 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
         
         if (offset != 0) {
             
-            self.currentIndex = (self.currentIndex + self.cycleImageList.count + offset) % self.cycleImageList.count;
+            self.currentIndex = (self.currentIndex + self.cycleList.count + offset) % self.cycleList.count;
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
             [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];

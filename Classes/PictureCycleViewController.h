@@ -10,8 +10,13 @@
 
 @interface PictureCycleViewController : UICollectionViewController
 
+@property (nonatomic,assign,getter=isNetImage)BOOL netImage;
+
 /// 图片数组
-@property (nonatomic, strong) NSMutableArray *cycleImageList;
+@property (nonatomic, strong) NSArray *cycleImageList;
+
+// 图片url数组
+@property (nonatomic,strong) NSArray *cycleImageUrls;
 
 /// 轮播时间间隔，默认2秒
 @property (nonatomic, assign) NSUInteger cycleTimeInterval;
