@@ -18,6 +18,9 @@
 /// 循环时间
 @property (nonatomic, strong) NSTimer *cycleTimer;
 
+// 对于只有两个页面的timer
+@property (nonatomic,strong) NSTimer *cycleTimer2;
+
 /// 循环布局
 @property (nonatomic, strong) UICollectionViewFlowLayout *layout;
 
@@ -63,29 +66,42 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 	
     // Register cell classes (注册cell)
     [self.collectionView registerClass:[PictureCycleCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    if (self.cycleImageList.count > 1) {
-        [self timeStart];
-    }
 }
 
 // view 即将显示
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-    [self.cycleTimer resumeTimerAfterTimeInterval:self.cycleTimeInterval];
-    
     self.pageControl.numberOfPages = self.cycleImageList.count;
     self.pageControl.center = CGPointMake(self.collectionView.superview.frame.size.width * 0.5, self.collectionView.frame.size.height * 0.9);
-	// 设置从第2个页开始显示
-	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-	
-	// 设置滑动位置
-	[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    
+    if(self.pageControl.numberOfPages == 2){
+        if (self.cycleTimer2 == nil) {
+            [self time2Start];
+        }else {
+            [self.cycleTimer2 resumeTimerAfterTimeInterval:self.cycleTimeInterval];
+        }
+    }else if(self.pageControl.numberOfPages > 2){
+        if (self.cycleTimer == nil) {
+            [self timeStart];
+        }else {
+            [self.cycleTimer resumeTimerAfterTimeInterval:self.cycleTimeInterval];
+        }
+        // 设置从第2个页开始显示
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+        
+        // 设置滑动位置
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.cycleTimer pauseTimer];
+    if (self.cycleImageList.count>2) {
+        [self.cycleTimer pauseTimer];
+    }else if(self.cycleImageList.count == 2){
+        [self.cycleTimer2 pauseTimer];
+    }
 }
 
 // layout 设置
@@ -118,22 +134,27 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 #pragma mark - UIScrollView滚动结束后的代理方法
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	
-	NSInteger offset = (NSInteger)(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width) - 1;
-	
-	if (offset != 0) {
-		
-		self.currentIndex = (self.currentIndex + self.cycleImageList.count + offset) % self.cycleImageList.count;
-
-		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
-		[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-		
-		[UIView setAnimationsEnabled:NO];
-		[self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-		[UIView setAnimationsEnabled:YES];
-		
-        self.pageControl.currentPage = self.currentIndex;
-
-	}
+    if (self.pageControl.numberOfPages < 3) {
+        NSInteger offset = (NSInteger)(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width);
+        self.pageControl.currentPage = offset;
+    }else {
+        NSInteger offset = (NSInteger)(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width) - 1;
+        
+        if (offset != 0) {
+            
+            self.currentIndex = (self.currentIndex + self.cycleImageList.count + offset) % self.cycleImageList.count;
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+            
+            [UIView setAnimationsEnabled:NO];
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            [UIView setAnimationsEnabled:YES];
+            
+            self.pageControl.currentPage = self.currentIndex;
+            
+        }
+    }
 }
 
 #pragma mark - 定时器相关方法
@@ -154,9 +175,33 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 	[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
+- (void)time2Start {
+    
+    // 1. 创建定时器
+    self.cycleTimer2 = [NSTimer timerWithTimeInterval:self.cycleTimeInterval target:self selector:@selector(cycleAnimate) userInfo:nil repeats:true];
+    
+    // 2. 添加定时器
+    [[NSRunLoop currentRunLoop] addTimer:self.cycleTimer2 forMode:NSRunLoopCommonModes];
+}
+
+- (void)cycleAnimate {
+    if (self.pageControl.currentPage == 0) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }else {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    }
+}
+
+
 // 开始拖拽 停止定时器
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.cycleTimer pauseTimer];
+    if (self.pageControl.numberOfPages == 2) {
+        [self.cycleTimer2 pauseTimer];
+    }else if(self.pageControl.numberOfPages > 2){
+        [self.cycleTimer pauseTimer];
+    }
 //	[self.cycleTimer invalidate];
 //	self.cycleTimer = nil;
 }
@@ -167,27 +212,36 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 //	self.cycleTimer = [NSTimer timerWithTimeInterval:self.cycleTimeInterval target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
 //	
 //	[[NSRunLoop currentRunLoop] addTimer:self.cycleTimer forMode:NSRunLoopCommonModes];
-    [self.cycleTimer resumeTimer];
+    if (self.pageControl.numberOfPages == 2) {
+        [self.cycleTimer2 resumeTimerAfterTimeInterval:self.cycleTimeInterval];
+    }else if(self.pageControl.numberOfPages > 2){
+        [self.cycleTimer resumeTimerAfterTimeInterval:self.cycleTimeInterval];
+    }
 }
 
 // 动画执行完成后执行
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
 
-	NSInteger offset = (NSInteger) (self.collectionView.contentOffset.x / self.collectionView.bounds.size.width) - 1;
-	
-	if (offset != 0) {
-		
-		self.currentIndex = (self.currentIndex + self.cycleImageList.count + offset) % self.cycleImageList.count;
-
-		NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
-		[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-		
-		[UIView setAnimationsEnabled:NO];
-		[self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
-		[UIView setAnimationsEnabled:YES];
-		
-		self.pageControl.currentPage = self.currentIndex;
-	}
+    if (self.pageControl.numberOfPages < 3) {
+        NSInteger offset = (NSInteger)(self.collectionView.contentOffset.x / self.collectionView.bounds.size.width);
+        self.pageControl.currentPage = offset;
+    }else {
+        NSInteger offset = (NSInteger) (self.collectionView.contentOffset.x / self.collectionView.bounds.size.width) - 1;
+        
+        if (offset != 0) {
+            
+            self.currentIndex = (self.currentIndex + self.cycleImageList.count + offset) % self.cycleImageList.count;
+            
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:1 inSection:0];
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+            
+            [UIView setAnimationsEnabled:NO];
+            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+            [UIView setAnimationsEnabled:YES];
+            
+            self.pageControl.currentPage = self.currentIndex;
+        }
+    }
 }
 
 #pragma mark - 懒加载

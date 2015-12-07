@@ -8,8 +8,10 @@
 
 #import "ViewController.h"
 #import "CycleViewController.h"
+#import "CycleViewCommenController.h"
 
-@interface ViewController ()<CycleAnimatorViewControllerDelegate>
+@interface ViewController ()
+//<CycleAnimatorViewControllerDelegate>
 
 @end
 
@@ -17,13 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CycleViewController *cycleView = [[CycleViewController alloc] init];  // 创建图片轮转
+//    CycleViewController *cycleView = [[CycleViewController alloc] init];  // 创建图片轮转
+    CycleViewCommenController *cycleView = [[CycleViewCommenController alloc]init];
+    
     [self addChildViewController:cycleView];// 添加控制
     
     self.tableView.tableHeaderView = cycleView.view;
     self.tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, 200);
     
-    cycleView.delegate = self;
+//    cycleView.delegate = self;
 }
 
 ///通过重写这个代理方法，即可进行点击图片后的交互处理.

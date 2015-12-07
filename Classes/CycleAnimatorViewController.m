@@ -74,8 +74,9 @@ static const NSArray *___SRTransitionAnimateType;
     rightSwiperGesture.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:rightSwiperGesture];
 //    rightSwiperGesture.delegate = self;
-    
-    [self timeStart];
+    if (self.animatorImageList.count != 1) {
+        [self timeStart];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
