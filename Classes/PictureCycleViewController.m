@@ -77,11 +77,17 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 	[super viewWillAppear:animated];
 	
     if (self.isNetImage) {
-        self.pageControl.numberOfPages = self.cycleImageUrls.count;
         _cycleList = self.cycleImageUrls;
+        if (_cycleList == nil) {
+            _cycleList = @[@"http://"];
+        }
+        self.pageControl.numberOfPages = self.cycleImageUrls.count;
     }else{
-        self.pageControl.numberOfPages = self.cycleImageList.count;
         _cycleList = self.cycleImageList;
+        if (_cycleList == nil) {
+            _cycleList = @[[UIImage imageWithColor:[UIColor blackColor]]];
+        }
+        self.pageControl.numberOfPages = self.cycleImageList.count;
     }
     self.pageControl.center = CGPointMake(self.collectionView.superview.frame.size.width * 0.5, self.collectionView.frame.size.height * 0.9);
     
@@ -111,6 +117,33 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
         [self.cycleTimer pauseTimer];
     }else if(self.cycleList.count == 2){
         [self.cycleTimer2 pauseTimer];
+    }
+}
+
+- (void)setCycleImageUrls:(NSArray *)cycleImageUrls {
+    _cycleImageUrls = cycleImageUrls;
+    
+    _cycleList = self.cycleImageUrls;
+    self.pageControl.numberOfPages = self.cycleImageUrls.count;
+    
+    if(self.pageControl.numberOfPages == 2){
+        if (self.cycleTimer2 == nil) {
+            [self time2Start];
+        }else {
+            [self.cycleTimer2 resumeTimerAfterTimeInterval:self.cycleTimeInterval];
+        }
+    }else if(self.pageControl.numberOfPages > 2){
+        if (self.cycleTimer == nil) {
+            [self timeStart];
+        }else {
+            [self.cycleTimer resumeTimerAfterTimeInterval:self.cycleTimeInterval];
+        }
+        [self.collectionView reloadData];
+        // 设置从第2个页开始显示
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+        
+        // 设置滑动位置
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
     }
 }
 
