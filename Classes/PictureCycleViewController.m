@@ -132,6 +132,7 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
         }else {
             [self.cycleTimer2 resumeTimerAfterTimeInterval:self.cycleTimeInterval];
         }
+        [self.collectionView reloadData];
     }else if(self.pageControl.numberOfPages > 2){
         if (self.cycleTimer == nil) {
             [self timeStart];
@@ -165,9 +166,15 @@ static NSString * const reuseIdentifier = @"PictureCycleCellID";
 	
     PictureCycleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
 //	self.cellIndex = indexPath.item;
-	NSInteger index = (indexPath.item - 1 + self.cycleList.count + self.currentIndex ) % self.cycleList.count;
+    NSInteger index;
+    if (self.cycleList.count < 3) {
+        index = indexPath.item;
+//        NSLog(@"%ld",indexPath.item);
+    }else {
+        index = (indexPath.item - 1 + self.cycleList.count + self.currentIndex ) % self.cycleList.count;
+    }
     if (self.isNetImage) {
-        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.cycleImageUrls[index]] placeholderImage:[UIImage imageWithColor:[UIColor blackColor]]];
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.cycleImageUrls[index]] placeholderImage:self.placeholderImage];
     }else {
         cell.image = self.cycleImageList[index];
     }

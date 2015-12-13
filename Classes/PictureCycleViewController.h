@@ -21,4 +21,7 @@
 /// 轮播时间间隔，默认2秒
 @property (nonatomic, assign) NSUInteger cycleTimeInterval;
 
+// 占位图片
+@property (nonatomic,strong) UIImage *placeholderImage;
+
 @end
