@@ -1,7 +1,7 @@
 # CycleView_OC
 
-* The easiest way to use infinite-loop-view
-* 用法最简单的无限循环的图片轮播器,使用OC实现，更加便于大家的使用。
+* The easiest way to use infinite-loop-view，New network image matching
+* 用法最简单的无限循环的图片轮播器,新增了网络图片的适配。
 
 ## Requirements
 
@@ -67,6 +67,9 @@ For more information about how to use CocoaPods, I suggest [this tutorial](http:
     }
     //传入图片列表
     self.cycleImageList = arrayM;
+    //也可以加载URL数组
+    self.netImage = YES;
+    self.cycleImageUrls = @[@"http://pic2.sc.chinaz.com/files/pic/pic9/201512/apic16892.jpg",@"http://pic14.nipic.com/20110522/7411759_164157418126_2.jpg",@"http://pic.nipic.com/2007-11-09/2007119122519868_2.jpg",@"http://pic24.nipic.com/20121022/9252150_193011306000_2.jpg"];
 }
 
 ///通过重写这个代理方法，即可进行点击图片后的交互处理.
